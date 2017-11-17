@@ -38,6 +38,8 @@ namespace CarsInventoryMgmt.Controllers
         /// <summary>
         /// This method uses for Open popup of Add/Edit Car View
         /// </summary>
+        /// <param name="carid"></param>
+        /// <param name="counter"></param>
         /// <returns></returns>
         public ActionResult AddEditCar(string carid = "0", string counter ="")
         {            
