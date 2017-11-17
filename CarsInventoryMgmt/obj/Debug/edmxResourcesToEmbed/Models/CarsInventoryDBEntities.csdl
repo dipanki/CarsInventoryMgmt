@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarsInventoryMgmtModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarsInventoryMgmtEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CarDetails" EntityType="CarsInventoryMgmtModel.CarDetail" />
+    <FunctionImport Name="sp_Get_Car_Details_By_User_Id" ReturnType="Collection(CarsInventoryMgmtModel.sp_Get_Car_Details_By_User_Id_Result)">
+      <Parameter Name="User_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Limit" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="Take" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_Car_Details" ReturnType="Collection(Decimal)">
+      <Parameter Name="User_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Brand" Mode="In" Type="String" />
+      <Parameter Name="Model" Mode="In" Type="String" />
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+      <Parameter Name="New" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Update_Car_Details" ReturnType="Collection(CarsInventoryMgmtModel.sp_Update_Car_Details_Result)">
+      <Parameter Name="Car_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Brand" Mode="In" Type="String" />
+      <Parameter Name="Model" Mode="In" Type="String" />
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+      <Parameter Name="New" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="CarDetail">
+    <Key>
+      <PropertyRef Name="Car_Id" />
+    </Key>
+    <Property Name="Car_Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="Brand" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="New" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_Get_Car_Details_By_User_Id_Result">
+    <Property Type="Int64" Name="Car_Id" Nullable="false" />
+    <Property Type="Int32" Name="User_Id" Nullable="true" />
+    <Property Type="String" Name="Brand" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Year" Nullable="true" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="New" Nullable="true" />
+    <Property Type="Int32" Name="Overall_Count" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Update_Car_Details_Result">
+    <Property Type="Int64" Name="Car_Id" Nullable="false" />
+    <Property Type="Int32" Name="User_Id" Nullable="true" />
+    <Property Type="String" Name="Brand" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Year" Nullable="true" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="New" Nullable="true" />
+  </ComplexType>
+</Schema>

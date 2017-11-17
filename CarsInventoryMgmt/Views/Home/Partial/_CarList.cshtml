@@ -1,0 +1,46 @@
+﻿@model List<CarsInventoryMgmt.Models.sp_Get_Car_Details_By_User_Id_Result>
+@{
+    int totalCount = Convert.ToInt16((Model != null && Model.Count > 0) ? @Model.FirstOrDefault().Overall_Count : 0);
+    CarsInventoryMgmt.Models.Common _cs = new CarsInventoryMgmt.Models.Common();
+}
+@if (Model != null && Model.Count() > 0)
+{
+    int counterAdd = (ViewBag.Limit == 0) ? 0 : ViewBag.Limit;
+    long counter = 1 + counterAdd;
+    int loadmore = ViewBag.Limit + ViewBag.Take;
+    foreach (var data in Model)
+    {
+    <div class="img-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="tab-content">
+                    <a class="more comm-btn" href="javascript:void(0);"  onclick="AddEditCar('@_cs.Encrypt(Convert.ToString(data.Car_Id))','@counter')">Edit<i class="icon-angle-right"></i></a>
+                    <div class="headding clsupdatecar_@counter">
+                        <h3>@Convert.ToString(counter + ") ") Brand Name: @data.Brand</h3>
+                        <p>Model Name: @data.Model</p>
+                        <p>Year : @data.Year</p>
+                        <p>Price : @Convert.ToString("$" + data.Price)</p>
+                        <p>New : @((@data.New == true) ? "YES" : "NO")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+        counter++;
+    }
+    if (loadmore < totalCount)
+    {
+    <div class="load" id="CarsListLodMoreBtn">
+        <a href="javascript:void(0);" onclick="LoadMoreCarsList('@loadmore');return false;">load more</a>
+    </div>
+    }
+}
+else
+{
+    if (totalCount == 0)
+    {
+    <div class="img-content">
+        <h4>No Records Found!</h4>
+    </div>
+    }
+}

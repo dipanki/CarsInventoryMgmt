@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarsInventoryMgmtModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CarsInventoryMgmtModelStoreContainer">
+    <EntitySet Name="CarDetails" EntityType="CarsInventoryMgmtModel.Store.CarDetails" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="CarDetails">
+    <Key>
+      <PropertyRef Name="Car_Id" />
+    </Key>
+    <Property Name="Car_Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Price" Type="decimal" Scale="2" />
+    <Property Name="New" Type="bit" />
+  </EntityType>
+  <Function Name="sp_Get_Car_Details_By_User_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Id" Type="int" Mode="In" />
+    <Parameter Name="Limit" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="nvarchar" Mode="In" />
+    <Parameter Name="Take" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Insert_Car_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Id" Type="int" Mode="In" />
+    <Parameter Name="Brand" Type="nvarchar" Mode="In" />
+    <Parameter Name="Model" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="New" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Update_Car_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Car_Id" Type="int" Mode="In" />
+    <Parameter Name="Brand" Type="nvarchar" Mode="In" />
+    <Parameter Name="Model" Type="nvarchar" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="New" Type="bit" Mode="In" />
+  </Function>
+</Schema>

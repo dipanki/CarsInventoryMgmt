@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>@ViewBag.Title - Car Inventory Management</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<!-- BEGIN BODY -->
+<body>
+    <!-- HEADER -->
+    <header class="header-top">
+        <div class="container">
+            <div class="logo">
+                @Html.ActionLink("Cars Inventory Management", "Index", "Home")
+            </div>
+            <div class="buttons">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </header>
+    <div class="header-buttom">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="@Url.Action("index", "Home")">Cars List</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN PAGE CONTAINER -->
+    <div class="page-container">
+        <script src="~/Scripts/jquery-1.7.1.js"></script>
+        @Scripts.Render("~/Scripts/jquery.validate.min.js")
+        @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+        @Scripts.Render("~/Scripts/CustomScript.js")
+        @RenderSection("scripts", required: false)
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- BEGIN CONTAINER -->
+        @RenderBody()
+        <!-- END CONTAINER -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+
+    <!-- BEGIN FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-mid">
+                <div class="copy">
+                    <p>&COPY;2017 Cars Inventory Management.</p>
+                    <ul class="ftr-link">
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">terms & condition</a></li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <ul class="social-main">
+                        <li><a href="#" class="fb-icon"></a></li>
+                        <li><a href="#" class="ggl-icon"></a></li>
+                        <li><a href="#" class="twt-icon"></a></li>
+                        <li><a href="#" class="ppl-icon"></a></li>
+                        <li><a href="#" class="in-icon"></a></li>
+                        <li><a href="#" class="youtube-icon"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="login_popup" id="dvAddEditCar" style="display: none;">
+    </div>
+    <!-- END FOOTER -->
+</body>
+<!-- END BODY -->
+</html>

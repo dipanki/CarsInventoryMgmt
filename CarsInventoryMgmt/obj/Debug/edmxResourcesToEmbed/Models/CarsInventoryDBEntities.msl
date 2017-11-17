@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarsInventoryMgmtModelStoreContainer" CdmEntityContainer="CarsInventoryMgmtEntities">
+    <EntitySetMapping Name="CarDetails">
+      <EntityTypeMapping TypeName="CarsInventoryMgmtModel.CarDetail">
+        <MappingFragment StoreEntitySet="CarDetails">
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="New" ColumnName="New" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Get_Car_Details_By_User_Id" FunctionName="CarsInventoryMgmtModel.Store.sp_Get_Car_Details_By_User_Id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarsInventoryMgmtModel.sp_Get_Car_Details_By_User_Id_Result">
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="New" ColumnName="New" />
+          <ScalarProperty Name="Overall_Count" ColumnName="Overall_Count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Insert_Car_Details" FunctionName="CarsInventoryMgmtModel.Store.sp_Insert_Car_Details" />
+    <FunctionImportMapping FunctionImportName="sp_Update_Car_Details" FunctionName="CarsInventoryMgmtModel.Store.sp_Update_Car_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarsInventoryMgmtModel.sp_Update_Car_Details_Result">
+          <ScalarProperty Name="Car_Id" ColumnName="Car_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="New" ColumnName="New" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

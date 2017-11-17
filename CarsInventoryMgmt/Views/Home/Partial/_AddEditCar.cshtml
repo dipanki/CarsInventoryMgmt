@@ -1,0 +1,43 @@
+﻿@model CarsInventoryMgmt.Models.CarDetail
+<div class="popup_bg">
+    @using (Ajax.BeginForm("AddEditCar", "Home", new AjaxOptions { HttpMethod = "POST", OnBegin = "return ValidateCarDetailsForm();", OnSuccess = "return SaveCarDetails(data);" }, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="popup_heding">
+            <h2>@ViewBag.PageTitle</h2>
+        </div>
+        <span id="lblErr_Summary" class="help-block" style="color: red; text-align: left;"></span>                
+        <div class="popup_txt_grp">
+            @Html.TextBoxFor(x => x.Brand, new { @class = "popup_txt", @maxlength = "49", @placeholder = "Brand Name" })
+            <span id="lblErr_Brand" class="help-block" style="color: red; text-align: left;"></span>
+        </div>
+        <div class="popup_txt_grp">
+            @Html.TextBoxFor(x => x.Model, new { @class = "popup_txt", @maxlength = "49", @placeholder = "Model Name" })
+            <span id="lblErr_Model" class="help-block" style="color: red; text-align: left;"></span>
+        </div>          
+        <div class="popup_txt_grp">
+            @Html.TextBoxFor(x => x.Year, new { @class = "popup_txt validatenumeric", @maxlength = "4", @placeholder = "Year" })
+            <span id="lblErr_Year" class="help-block" style="color: red; text-align: left;"></span>
+        </div>        
+        <div class="popup_txt_grp">            
+            @Html.TextBoxFor(x => x.Price, new { @class = "popup_txt validatedecimal", @maxlength = "19", @placeholder = "Price(USD)" })
+            <span id="lblErr_Price" class="help-block" style="color: red; text-align: left;"></span>
+        </div>  
+        <div class="popup_txt_grp">
+            @{
+        var checkboxAttributes = (Model != null && Model.New == true) ?
+            (object)new { @class = "popup_txt", @checked = "checked" } :
+            (object)new { @class = "popup_txt" };
+            }
+            <label>@Html.CheckBox("New", checkboxAttributes) Is New Car?</label>
+            <span id="lblErr_New" class="help-block" style="color: red; text-align: left;"></span>
+        </div>                       
+        <div class="popup_btn">
+            <input type="submit" class="btn_orang" value="Save" style="background-color: #ff7f00;">
+        </div>                
+        <input type="hidden"  id="CarId" name="CarId" value="@ViewBag.Car_Id" />
+        <input type="hidden"  id="hdncounter" name="hdncounter" value="@ViewBag.Counter" />
+        <a href="javascript:void(0);" class="close_btn" onclick="CloseCarDetailsPopup()">
+            <img src="../images/close_btn.png"></a>        
+    }
+</div>

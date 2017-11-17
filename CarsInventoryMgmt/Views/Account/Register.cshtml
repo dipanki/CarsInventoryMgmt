@@ -1,0 +1,39 @@
+﻿@model CarsInventoryMgmt.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<section class="stories">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="popup_heding">
+                    <h2>Create a new account.</h2>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="popup_txt_grp">
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "popup_txt" })
+                    </div>
+                    <div class="popup_txt_grp">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "popup_txt" })
+                    </div>
+                    <div class="popup_txt_grp">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "popup_txt" })
+                    </div>
+                    <input type="submit" value="Register" class="comm-btn" />
+                }
+                <p>
+                    @Html.ActionLink("Log in", "Login", new { @class = "forgot_pass_link" }) if you have an account.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
